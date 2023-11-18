@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/main.dir/file_op.cc.o"
+  "CMakeFiles/main.dir/file_op.cc.o.d"
   "CMakeFiles/main.dir/main.cc.o"
   "CMakeFiles/main.dir/main.cc.o.d"
   "CMakeFiles/main.dir/mmap_file.cc.o"

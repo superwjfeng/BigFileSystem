@@ -130,6 +130,30 @@ main/fast:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+file_op.o: file_op.cc.o
+.PHONY : file_op.o
+
+# target to build an object file
+file_op.cc.o:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/file_op.cc.o
+.PHONY : file_op.cc.o
+
+file_op.i: file_op.cc.i
+.PHONY : file_op.i
+
+# target to preprocess a source file
+file_op.cc.i:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/file_op.cc.i
+.PHONY : file_op.cc.i
+
+file_op.s: file_op.cc.s
+.PHONY : file_op.s
+
+# target to generate assembly for a file
+file_op.cc.s:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/file_op.cc.s
+.PHONY : file_op.cc.s
+
 main.o: main.cc.o
 .PHONY : main.o
 
@@ -187,6 +211,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... file_op.o"
+	@echo "... file_op.i"
+	@echo "... file_op.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

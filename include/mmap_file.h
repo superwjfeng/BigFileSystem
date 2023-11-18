@@ -1,14 +1,12 @@
 #ifndef LARGEFILE_MMAPFILE_H_
 #define LARGEFILE_MMAPFILE_H_
 
+#include "common.h"
 #include <stdint.h>
-#include <unistd.h>
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdio.h>
-#include <cstring>
-#include <iostream>
 
 namespace wjfeng {
 namespace largefile {
