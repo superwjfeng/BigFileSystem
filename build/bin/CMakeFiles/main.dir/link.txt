@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/main.dir/main.cc.o CMakeFiles/main.dir/mmap_file.cc.o -o main 

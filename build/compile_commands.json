@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/bin",
+  "command": "/usr/bin/g++  -I/home/wjfeng/LargeFileSystem/src/../include -g -o CMakeFiles/main.dir/main.cc.o -c /home/wjfeng/LargeFileSystem/src/main.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/main.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/bin",
+  "command": "/usr/bin/g++  -I/home/wjfeng/LargeFileSystem/src/../include -g -o CMakeFiles/main.dir/mmap_file.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/mmap_file.cc"
+}
+]
