@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/wjfeng/LargeFileSystem/src/file_op.cc" "bin/CMakeFiles/main.dir/file_op.cc.o" "gcc" "bin/CMakeFiles/main.dir/file_op.cc.o.d"
   "/home/wjfeng/LargeFileSystem/src/main.cc" "bin/CMakeFiles/main.dir/main.cc.o" "gcc" "bin/CMakeFiles/main.dir/main.cc.o.d"
   "/home/wjfeng/LargeFileSystem/src/mmap_file.cc" "bin/CMakeFiles/main.dir/mmap_file.cc.o" "gcc" "bin/CMakeFiles/main.dir/mmap_file.cc.o.d"
+  "/home/wjfeng/LargeFileSystem/src/mmap_file_op.cc" "bin/CMakeFiles/main.dir/mmap_file_op.cc.o" "gcc" "bin/CMakeFiles/main.dir/mmap_file_op.cc.o.d"
   )
 
 # Targets to which this target links.

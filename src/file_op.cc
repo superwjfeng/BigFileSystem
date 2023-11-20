@@ -104,7 +104,7 @@ int FileOperation::pread_file(char *buf, const int32_t &nbytes,
     read_offset += read_len;
   }
   if (left != 0) return EXIT_DISK_OPER_INCOMPLETE;
-  return TFS_SUCCESS;
+  return LFS_SUCCESS;
 }
 
 int FileOperation::pwrite_file(const char *buf, const int32_t &nbytes,
@@ -136,7 +136,7 @@ int FileOperation::pwrite_file(const char *buf, const int32_t &nbytes,
     write_offset += written_len;
   }
   if (left != 0) return EXIT_DISK_OPER_INCOMPLETE;
-  return TFS_SUCCESS;
+  return LFS_SUCCESS;
 }
 
 int FileOperation::write_file(const char *buf, const int32_t &nbytes) {
@@ -165,7 +165,7 @@ int FileOperation::write_file(const char *buf, const int32_t &nbytes) {
     p_tmp += written_len;
   }
   if (left != 0) return EXIT_DISK_OPER_INCOMPLETE;
-  return TFS_SUCCESS;
+  return LFS_SUCCESS;
 }
 
 }  // namespace largefile

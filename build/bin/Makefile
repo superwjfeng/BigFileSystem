@@ -202,6 +202,30 @@ mmap_file.cc.s:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/mmap_file.cc.s
 .PHONY : mmap_file.cc.s
 
+mmap_file_op.o: mmap_file_op.cc.o
+.PHONY : mmap_file_op.o
+
+# target to build an object file
+mmap_file_op.cc.o:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/mmap_file_op.cc.o
+.PHONY : mmap_file_op.cc.o
+
+mmap_file_op.i: mmap_file_op.cc.i
+.PHONY : mmap_file_op.i
+
+# target to preprocess a source file
+mmap_file_op.cc.i:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/mmap_file_op.cc.i
+.PHONY : mmap_file_op.cc.i
+
+mmap_file_op.s: mmap_file_op.cc.s
+.PHONY : mmap_file_op.s
+
+# target to generate assembly for a file
+mmap_file_op.cc.s:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/mmap_file_op.cc.s
+.PHONY : mmap_file_op.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -220,6 +244,9 @@ help:
 	@echo "... mmap_file.o"
 	@echo "... mmap_file.i"
 	@echo "... mmap_file.s"
+	@echo "... mmap_file_op.o"
+	@echo "... mmap_file_op.i"
+	@echo "... mmap_file_op.s"
 .PHONY : help
 
 

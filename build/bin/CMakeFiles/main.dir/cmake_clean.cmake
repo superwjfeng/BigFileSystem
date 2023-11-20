@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/main.cc.o.d"
   "CMakeFiles/main.dir/mmap_file.cc.o"
   "CMakeFiles/main.dir/mmap_file.cc.o.d"
+  "CMakeFiles/main.dir/mmap_file_op.cc.o"
+  "CMakeFiles/main.dir/mmap_file_op.cc.o.d"
   "main"
   "main.pdb"
 )

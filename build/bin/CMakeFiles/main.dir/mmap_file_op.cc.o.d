@@ -1,6 +1,7 @@
-bin/CMakeFiles/main.dir/mmap_file.cc.o: \
- /home/wjfeng/LargeFileSystem/src/mmap_file.cc /usr/include/stdc-predef.h \
- /home/wjfeng/LargeFileSystem/src/../include/mmap_file.h \
+bin/CMakeFiles/main.dir/mmap_file_op.cc.o: \
+ /home/wjfeng/LargeFileSystem/src/mmap_file_op.cc \
+ /usr/include/stdc-predef.h \
+ /home/wjfeng/LargeFileSystem/src/../include/mmap_file_op.h \
  /home/wjfeng/LargeFileSystem/src/../include/common.h \
  /usr/include/assert.h /usr/include/features.h \
  /usr/include/features-time64.h \
@@ -175,8 +176,11 @@ bin/CMakeFiles/main.dir/mmap_file.cc.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
+ /home/wjfeng/LargeFileSystem/src/../include/file_op.h \
+ /home/wjfeng/LargeFileSystem/src/../include/mmap_file.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
  /usr/include/x86_64-linux-gnu/bits/mman-linux.h \
- /usr/include/x86_64-linux-gnu/bits/mman-shared.h
+ /usr/include/x86_64-linux-gnu/bits/mman-shared.h \
+ /home/wjfeng/LargeFileSystem/src/../include/common.h
