@@ -19,9 +19,9 @@ const int32_t EXIT_DISK_OPER_INCOMPLETE =
     -8012;  // read or write length is less than required
 
 struct MMapOption {
-  int32_t max_mmap_size_; // 最大映射空间尺寸，例：3M
-  int32_t first_mmap_size_; // 首次映射尺寸，例：4K
-  int32_t per_mmap_size_; // 之后可以继续递增尺寸，例：2K
+  int32_t max_mmap_size_;    // 最大映射空间尺寸，例：3M
+  int32_t first_mmap_size_;  // 首次映射尺寸，例：4K
+  int32_t per_mmap_size_;    // 之后可以继续递增尺寸，例：2K
 };
 
 struct BlockInfo {
