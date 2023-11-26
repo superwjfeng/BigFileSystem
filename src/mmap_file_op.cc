@@ -35,17 +35,20 @@ int MMapFileOperation::munmap_file() {
 }
 
 void *MMapFileOperation::get_map_data() const {
-  if (is_mapped_) return map_file_->get_data();
-  return nullptr;
+  if (is_mapped_) {
+    return map_file_->get_data();
+  } else {
+    return nullptr;
+  }
 }
 
-int MMapFileOperation::pread_file(char *buf, const int32_t &size,
-                                  const int64_t &offset) {
-  // 情况1，内存已经映射
+int MMapFileOperation::pread_file(char *buf, const int32_t size,
+                                  const int64_t offset) {
+  // 情况1，内存已经映射，检查一下映射区域的大小
   if (is_mapped_ && (offset + size) > map_file_->get_size()) {
     if (debug) {
       fprintf(stdout,
-              "MMapFileOperation::pread_file:, size:%d, ofset: %"__PRI64_PREFIX
+              "MMapFileOperation::pread_file:, size:%d, ofset: %" __PRI64_PREFIX
               "d, map file size: %d, need remap\n",
               size, offset, map_file_->get_size());
     }
@@ -57,19 +60,20 @@ int MMapFileOperation::pread_file(char *buf, const int32_t &size,
     return LFS_SUCCESS;
   }
 
-  // 情况2，内存没有映射或是要读取的数据映射不全
+  // 情况2，内存没有映射或是要读取的数据映射不全。派生类指针this调用基类的方法
   return FileOperation::pread_file(buf, size, offset);
 }
 
-int MMapFileOperation::pwrite_file(const char *buf, const int32_t &size,
-                                   const int64_t &offset) {
+int MMapFileOperation::pwrite_file(const char *buf, const int32_t size,
+                                   const int64_t offset) {
   // 情况1，内存已经映射
   if (is_mapped_ && (offset + size) > map_file_->get_size()) {
     if (debug) {
-      fprintf(stdout,
-              "MMapFileOperation::pwrite_file:, size:%d, ofset: %"__PRI64_PREFIX
-              "d, map file size: %d, need remap\n",
-              size, offset, map_file_->get_size());
+      fprintf(
+          stdout,
+          "MMapFileOperation::pwrite_file:, size:%d, ofset: %" __PRI64_PREFIX
+          "d, map file size: %d, need remap\n",
+          size, offset, map_file_->get_size());
     }
     map_file_->remap_file();
   }
@@ -79,7 +83,7 @@ int MMapFileOperation::pwrite_file(const char *buf, const int32_t &size,
     return LFS_SUCCESS;
   }
 
-  // 情况2，内存没有映射或是要读取的数据映射不全
+  // 情况2，内存没有映射或是要读取的数据映射不全。派生类指针this调用基类的方法
   return FileOperation::pwrite_file(buf, size, offset);
 }
 

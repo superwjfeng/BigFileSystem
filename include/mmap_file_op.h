@@ -10,7 +10,7 @@ namespace largefile {
 class MMapFileOperation : public FileOperation {
  public:
   MMapFileOperation(const std::string &file_name,
-                    const int &open_flags = O_CREAT | O_RDWR | O_LARGEFILE)
+                    const int open_flags = O_CREAT | O_RDWR | O_LARGEFILE)
       : FileOperation(file_name, open_flags),
         map_file_(nullptr),
         is_mapped_(false) {}
@@ -21,11 +21,11 @@ class MMapFileOperation : public FileOperation {
     }
   }
 
-  int mmap_file(const MMapOption &mmap_option);
+  int mmap_file(const MMapOption &mmap_option); // 映射文件
   int munmap_file();
 
-  int pread_file(char *buf, const int32_t &size, const int64_t &offset);
-  int pwrite_file(const char *buf, const int32_t &size, const int64_t &offset);
+  int pread_file(char *buf, const int32_t size, const int64_t offset);
+  int pwrite_file(const char *buf, const int32_t size, const int64_t offset);
 
   void *get_map_data() const;
   int flush_file();

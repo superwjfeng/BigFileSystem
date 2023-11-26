@@ -5,8 +5,8 @@ static int debug = 1;  // debug mode close if 0, open if 1
 namespace wjfeng {
 namespace largefile {
 MMapFile::MMapFile() : size_(0), fd_(-1), data_(nullptr) {}
-MMapFile::MMapFile(const int &fd) : size_(0), fd_(fd), data_(nullptr) {}
-MMapFile::MMapFile(const MMapOption &mmap_option, const int &fd)
+MMapFile::MMapFile(const int fd) : size_(0), fd_(fd), data_(nullptr) {}
+MMapFile::MMapFile(const MMapOption &mmap_option, const int fd)
     : size_(0), fd_(fd), data_(nullptr) {
   mmap_file_option_.max_mmap_size_ = mmap_option.max_mmap_size_;
   mmap_file_option_.first_mmap_size_ = mmap_option.first_mmap_size_;
@@ -16,7 +16,7 @@ MMapFile::~MMapFile() {
   if (data_) {
     if (debug) {
       std::cout << "mmap file destruct, fd: " << fd_
-                << ", maped size: " << size_ << ", data: " << data_
+                << ", mapped size: " << size_ << ", data: " << data_
                 << std::endl;
     }
     msync(data_, size_, MS_SYNC);
@@ -33,13 +33,21 @@ MMapFile::~MMapFile() {
 
 bool MMapFile::sync_file() {
   if (data_ != nullptr && size_ > 0) {
-    return msync(data_, size_, MS_ASYNC) == 0;
+    int ret = msync(data_, size_, MS_ASYNC) == 0;
+    if (debug) {
+      if (ret)
+        fprintf(stderr, "msync successfully!\n");
+      else
+        fprintf(stderr, "msync failed!\n");
+    }
+
+    return ret;
   }
   return true;  // no sync
 }
 
-bool MMapFile::map_file(const bool &write) {
-  int flags = PROT_READ;
+bool MMapFile::map_file(const bool write) {
+  int flags = PROT_READ;  // 映射内存默认至少是可读的
   if (write) flags |= PROT_WRITE;
 
   // check parameters for mmap
@@ -63,8 +71,8 @@ bool MMapFile::map_file(const bool &write) {
     return false;
   }
   if (debug) {
-    std::cout << "mmap file successed, fd: " << fd_ << ", maped size: " << size_
-              << ", data: " << data_ << std::endl;
+    std::cout << "mmap file successed, fd: " << fd_
+              << ", mapped size: " << size_ << ", data: " << data_ << std::endl;
   }
   return true;
 }
@@ -81,7 +89,7 @@ bool MMapFile::munmap_file() {
 
 bool MMapFile::remap_file() {
   if (fd_ < 0 || data_ == nullptr) {
-    fprintf(stderr, "mremap not mapped yet\n");
+    fprintf(stderr, "file not mapped yet\n");
     return false;
   }
   if (mmap_file_option_.max_mmap_size_ == size_) {
@@ -89,6 +97,7 @@ bool MMapFile::remap_file() {
             size_, mmap_file_option_.max_mmap_size_);
     return false;
   }
+  
   int new_size = size_ + mmap_file_option_.per_mmap_size_;
   if (new_size > mmap_file_option_.max_mmap_size_) {
     new_size = mmap_file_option_.max_mmap_size_;
@@ -100,8 +109,9 @@ bool MMapFile::remap_file() {
   }
 
   if (debug) {
-    std::cout << "mmap file destruct, fd: " << fd_ << ", maped size: " << size_
-              << ", data: " << data_ << std::endl;
+    std::cout << "mremap file start, fd: " << fd_ << ", old size: " << size_
+              << ", new size:" << new_size << ", old data: " << data_
+              << std::endl;
   }
   void *new_map_data = mremap(data_, size_, new_size, MREMAP_MAYMOVE);
   if (new_map_data == MAP_FAILED) {
@@ -110,9 +120,9 @@ bool MMapFile::remap_file() {
     return false;
   } else {
     if (debug) {
-      std::cout << "remap file successed, fd: " << fd_
-                << ", maped size: " << size_ << ", data: " << data_
-                << std::endl;
+      std::cout << "mremap file successed, fd: " << fd_
+                << ", old size: " << size_ << ", new size:" << new_size
+                << ", old data: " << data_ << std::endl;
     }
   }
   data_ = new_map_data;
@@ -120,14 +130,14 @@ bool MMapFile::remap_file() {
   return true;
 }
 
-bool MMapFile::ensure_file_size(const int32_t &size) const {
+bool MMapFile::ensure_file_size(const int32_t size) const {
   struct stat s;
   if (fstat(fd_, &s) < 0) {
     fprintf(stderr, "fstat error, error desc: %s\n", strerror(errno));
     return false;
   }
   if (s.st_size < size) {
-    if (ftruncate(fd_, size)) {  // 扩容
+    if (ftruncate(fd_, size)) {  // 文件的大小比要映射的内存的小，扩容
       fprintf(stderr, "ftruncate error, size: %d, error desc: %s\n", size,
               strerror(errno));
       return false;
@@ -135,5 +145,6 @@ bool MMapFile::ensure_file_size(const int32_t &size) const {
   }
   return true;
 }
+
 }  // namespace largefile
 }  // namespace wjfeng

@@ -126,8 +126,47 @@ main: cmake_check_build_system
 
 # fast build rule for target.
 main/fast:
-	$(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/build
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
 .PHONY : main/fast
+
+#=============================================================================
+# Target rules for targets named mmap_file_test
+
+# Build rule for target.
+mmap_file_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mmap_file_test
+.PHONY : mmap_file_test
+
+# fast build rule for target.
+mmap_file_test/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_test.dir/build.make tests/CMakeFiles/mmap_file_test.dir/build
+.PHONY : mmap_file_test/fast
+
+#=============================================================================
+# Target rules for targets named file_op_test
+
+# Build rule for target.
+file_op_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 file_op_test
+.PHONY : file_op_test
+
+# fast build rule for target.
+file_op_test/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/file_op_test.dir/build.make tests/CMakeFiles/file_op_test.dir/build
+.PHONY : file_op_test/fast
+
+#=============================================================================
+# Target rules for targets named mmap_file_op_test
+
+# Build rule for target.
+mmap_file_op_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mmap_file_op_test
+.PHONY : mmap_file_op_test
+
+# fast build rule for target.
+mmap_file_op_test/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/build
+.PHONY : mmap_file_op_test/fast
 
 # Help Target
 help:
@@ -137,7 +176,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... file_op_test"
 	@echo "... main"
+	@echo "... mmap_file_op_test"
+	@echo "... mmap_file_test"
 .PHONY : help
 
 

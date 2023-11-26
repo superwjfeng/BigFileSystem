@@ -6,6 +6,7 @@ namespace wjfeng {
 namespace largefile {
 FileOperation::FileOperation(const std::string &file_name, const int open_flags)
     : fd_(-1), open_flags_(open_flags) {
+  // 拷贝字符串s的一个副本，由函数返回值返回，这个副本有自己的内存空间，和s不相干
   file_name_ = strdup(file_name.c_str());
 }
 
@@ -36,26 +37,26 @@ void FileOperation::close_file() {
   fd_ = -1;
 }
 
+int FileOperation::check_file() {
+  if (fd_ < 0) fd_ = open_file();
+  return fd_;
+}
+
 int64_t FileOperation::get_file_size() {
-  int fd = check_file();
+  int fd = check_file();  // 确保文件打开了
   if (fd < 0) return -1;
   struct stat statbuf;
   if (fstat(fd, &statbuf) != 0) return -1;
   return statbuf.st_size;
 }
 
-int FileOperation::check_file() {
-  if (fd_ < 0) fd_ = open_file();
-  return fd_;
-}
-
-int FileOperation::ftruncate_file(const int64_t &len) {
+int FileOperation::ftruncate_file(const int64_t len) {
   int fd = check_file();
   if (fd < 0) return fd;
   return ftruncate(fd, len);
 }
 
-int FileOperation::seek_file(const int64_t &offset) {
+int FileOperation::seek_file(const int64_t offset) {
   int fd = check_file();
   if (fd < 0) return fd;
   return lseek(fd, offset, SEEK_SET);
@@ -70,12 +71,12 @@ int FileOperation::flush_file() {
 
 int FileOperation::unlink_file() {
   close_file();
-  return unlink(file_name_);
+  return ::unlink(file_name_);
 }
 
-int FileOperation::pread_file(char *buf, const int32_t &nbytes,
-                              const int64_t &offset) {
-  int32_t left = nbytes;
+int FileOperation::pread_file(char *buf, const int32_t nbytes,
+                              const int64_t offset) {
+  int32_t left = nbytes;  // 剩余的数据
   int64_t read_offset = offset;
   int32_t read_len = 0;
   char *p_tmp = buf;
@@ -86,18 +87,14 @@ int FileOperation::pread_file(char *buf, const int32_t &nbytes,
     if (check_file() < 0) return -errno;
     read_len = ::pread64(fd_, p_tmp, left, read_offset);
     if (read_len < 0) {
-      read_len = -errno;
       // 不直接使用errno，因为有可能多线程
-      if (-read_len == EINTR || -read_len == EAGAIN) {
-        continue;
-      } else if (-read_len == EBADF) {
-        fd_ = -1;
+      read_len = -errno;
+      //  EINTR 临时中断，EAGAIN 继续尝试，EBADF fd损坏 三种情况下继续循环
+      if (-read_len == EINTR || -read_len == EAGAIN || -read_len == EBADF) {
         continue;
       } else {
         return read_len;
       }
-    } else if (read_len == 0) {
-      break;
     }
     left -= read_len;
     p_tmp += read_len;
@@ -107,8 +104,8 @@ int FileOperation::pread_file(char *buf, const int32_t &nbytes,
   return LFS_SUCCESS;
 }
 
-int FileOperation::pwrite_file(const char *buf, const int32_t &nbytes,
-                               const int64_t &offset) {
+int FileOperation::pwrite_file(const char *buf, const int32_t nbytes,
+                               const int64_t offset) {
   int32_t left = nbytes;
   int64_t write_offset = offset;
   int32_t written_len = 0;
@@ -121,11 +118,8 @@ int FileOperation::pwrite_file(const char *buf, const int32_t &nbytes,
     written_len = ::pwrite64(fd_, p_tmp, left, write_offset);
     if (written_len < 0) {
       written_len = -errno;
-      // 不直接使用errno，因为有可能多线程
-      if (-written_len == EINTR || -written_len == EAGAIN) {
-        continue;
-      } else if (-written_len == EBADF) {
-        fd_ = -1;
+      if (-written_len == EINTR || -written_len == EAGAIN ||
+          -written_len == EBADF) {
         continue;
       } else {
         return written_len;
@@ -139,7 +133,7 @@ int FileOperation::pwrite_file(const char *buf, const int32_t &nbytes,
   return LFS_SUCCESS;
 }
 
-int FileOperation::write_file(const char *buf, const int32_t &nbytes) {
+int FileOperation::write_file(const char *buf, const int32_t nbytes) {
   int32_t left = nbytes;
   int32_t written_len = 0;
   const char *p_tmp = buf;
@@ -152,10 +146,8 @@ int FileOperation::write_file(const char *buf, const int32_t &nbytes) {
     if (written_len < 0) {
       written_len = -errno;
       // 不直接使用errno，因为有可能多线程
-      if (-written_len == EINTR || -written_len == EAGAIN) {
-        continue;
-      } else if (-written_len == EBADF) {
-        fd_ = -1;
+      if (-written_len == EINTR || -written_len == EAGAIN ||
+          -written_len == EBADF) {
         continue;
       } else {
         return written_len;

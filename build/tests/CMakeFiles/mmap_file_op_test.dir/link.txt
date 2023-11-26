@@ -1,0 +1,1 @@
+g++ -g -rdynamic CMakeFiles/mmap_file_op_test.dir/mmap_file_op_test.cc.o CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file_op.cc.o CMakeFiles/mmap_file_op_test.dir/__/src/file_op.cc.o CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file.cc.o -o ../../bin/mmap_file_op_test 

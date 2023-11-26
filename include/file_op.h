@@ -13,16 +13,17 @@ class FileOperation {
 
   int open_file();
   void close_file();
-  int flush_file();   // write immediately
+  int flush_file();   // write to disk immediately
   int unlink_file();  // delete file
-  virtual int pread_file(char *buf, const int32_t &nbytes,
-                         const int64_t &offset);
-  virtual int pwrite_file(const char *buf, const int32_t &nbytes,
-                          const int64_t &offset);
-  int write_file(const char *buf, const int32_t &nbytes);
+
+  virtual int pread_file(char *buf, const int32_t nbytes, const int64_t offset);
+  virtual int pwrite_file(const char *buf, const int32_t nbytes,
+                          const int64_t offset);
+  int write_file(const char *buf, const int32_t nbytes);
+
+  int ftruncate_file(const int64_t len);
+  int seek_file(const int64_t offset);  // 移动文件指针到offset处
   int64_t get_file_size();
-  int ftruncate_file(const int64_t &len);
-  int seek_file(const int64_t &offset);
   int get_fd() const { return fd_; }
 
  protected:

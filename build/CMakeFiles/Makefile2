@@ -63,57 +63,157 @@ CMAKE_BINARY_DIR = /home/wjfeng/LargeFileSystem/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: bin/all
+all: src/all
+all: tests/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: bin/preinstall
+preinstall: src/preinstall
+preinstall: tests/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: bin/clean
+clean: src/clean
+clean: tests/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory bin
+# Directory level rules for directory src
 
 # Recursive "all" directory target.
-bin/all: bin/CMakeFiles/main.dir/all
-.PHONY : bin/all
+src/all: src/CMakeFiles/main.dir/all
+.PHONY : src/all
 
 # Recursive "preinstall" directory target.
-bin/preinstall:
-.PHONY : bin/preinstall
+src/preinstall:
+.PHONY : src/preinstall
 
 # Recursive "clean" directory target.
-bin/clean: bin/CMakeFiles/main.dir/clean
-.PHONY : bin/clean
+src/clean: src/CMakeFiles/main.dir/clean
+.PHONY : src/clean
 
 #=============================================================================
-# Target rules for target bin/CMakeFiles/main.dir
+# Directory level rules for directory tests
+
+# Recursive "all" directory target.
+tests/all: tests/CMakeFiles/mmap_file_test.dir/all
+tests/all: tests/CMakeFiles/file_op_test.dir/all
+tests/all: tests/CMakeFiles/mmap_file_op_test.dir/all
+.PHONY : tests/all
+
+# Recursive "preinstall" directory target.
+tests/preinstall:
+.PHONY : tests/preinstall
+
+# Recursive "clean" directory target.
+tests/clean: tests/CMakeFiles/mmap_file_test.dir/clean
+tests/clean: tests/CMakeFiles/file_op_test.dir/clean
+tests/clean: tests/CMakeFiles/mmap_file_op_test.dir/clean
+.PHONY : tests/clean
+
+#=============================================================================
+# Target rules for target src/CMakeFiles/main.dir
 
 # All Build rule for target.
-bin/CMakeFiles/main.dir/all:
-	$(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/depend
-	$(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wjfeng/LargeFileSystem/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target main"
-.PHONY : bin/CMakeFiles/main.dir/all
+src/CMakeFiles/main.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wjfeng/LargeFileSystem/build/CMakeFiles --progress-num=4,5,6,7,8 "Built target main"
+.PHONY : src/CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
-bin/CMakeFiles/main.dir/rule: cmake_check_build_system
+src/CMakeFiles/main.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/wjfeng/LargeFileSystem/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bin/CMakeFiles/main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/wjfeng/LargeFileSystem/build/CMakeFiles 0
-.PHONY : bin/CMakeFiles/main.dir/rule
+.PHONY : src/CMakeFiles/main.dir/rule
 
 # Convenience name for target.
-main: bin/CMakeFiles/main.dir/rule
+main: src/CMakeFiles/main.dir/rule
 .PHONY : main
 
 # clean rule for target.
-bin/CMakeFiles/main.dir/clean:
-	$(MAKE) $(MAKESILENT) -f bin/CMakeFiles/main.dir/build.make bin/CMakeFiles/main.dir/clean
-.PHONY : bin/CMakeFiles/main.dir/clean
+src/CMakeFiles/main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/clean
+.PHONY : src/CMakeFiles/main.dir/clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/mmap_file_test.dir
+
+# All Build rule for target.
+tests/CMakeFiles/mmap_file_test.dir/all:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_test.dir/build.make tests/CMakeFiles/mmap_file_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_test.dir/build.make tests/CMakeFiles/mmap_file_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wjfeng/LargeFileSystem/build/CMakeFiles --progress-num=14,15,16 "Built target mmap_file_test"
+.PHONY : tests/CMakeFiles/mmap_file_test.dir/all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/mmap_file_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wjfeng/LargeFileSystem/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/mmap_file_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wjfeng/LargeFileSystem/build/CMakeFiles 0
+.PHONY : tests/CMakeFiles/mmap_file_test.dir/rule
+
+# Convenience name for target.
+mmap_file_test: tests/CMakeFiles/mmap_file_test.dir/rule
+.PHONY : mmap_file_test
+
+# clean rule for target.
+tests/CMakeFiles/mmap_file_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_test.dir/build.make tests/CMakeFiles/mmap_file_test.dir/clean
+.PHONY : tests/CMakeFiles/mmap_file_test.dir/clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/file_op_test.dir
+
+# All Build rule for target.
+tests/CMakeFiles/file_op_test.dir/all:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/file_op_test.dir/build.make tests/CMakeFiles/file_op_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/file_op_test.dir/build.make tests/CMakeFiles/file_op_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wjfeng/LargeFileSystem/build/CMakeFiles --progress-num=1,2,3 "Built target file_op_test"
+.PHONY : tests/CMakeFiles/file_op_test.dir/all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/file_op_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wjfeng/LargeFileSystem/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/file_op_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wjfeng/LargeFileSystem/build/CMakeFiles 0
+.PHONY : tests/CMakeFiles/file_op_test.dir/rule
+
+# Convenience name for target.
+file_op_test: tests/CMakeFiles/file_op_test.dir/rule
+.PHONY : file_op_test
+
+# clean rule for target.
+tests/CMakeFiles/file_op_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/file_op_test.dir/build.make tests/CMakeFiles/file_op_test.dir/clean
+.PHONY : tests/CMakeFiles/file_op_test.dir/clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/mmap_file_op_test.dir
+
+# All Build rule for target.
+tests/CMakeFiles/mmap_file_op_test.dir/all:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wjfeng/LargeFileSystem/build/CMakeFiles --progress-num=9,10,11,12,13 "Built target mmap_file_op_test"
+.PHONY : tests/CMakeFiles/mmap_file_op_test.dir/all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/mmap_file_op_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wjfeng/LargeFileSystem/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/mmap_file_op_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wjfeng/LargeFileSystem/build/CMakeFiles 0
+.PHONY : tests/CMakeFiles/mmap_file_op_test.dir/rule
+
+# Convenience name for target.
+mmap_file_op_test: tests/CMakeFiles/mmap_file_op_test.dir/rule
+.PHONY : mmap_file_op_test
+
+# clean rule for target.
+tests/CMakeFiles/mmap_file_op_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/clean
+.PHONY : tests/CMakeFiles/mmap_file_op_test.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

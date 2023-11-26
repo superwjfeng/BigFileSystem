@@ -3,12 +3,14 @@
 #include <assert.h>
 #include <fcntl.h>
 #include <inttypes.h>
+#include <stdio.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
 
 #include <cstring>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 namespace wjfeng {
@@ -16,7 +18,24 @@ namespace largefile {
 const int32_t LFS_SUCCESS = 0;
 const int32_t LFS_ERROR = -1;
 const int32_t EXIT_DISK_OPER_INCOMPLETE =
-    -8012;  // read or write length is less than required
+    -8000;  // read or write length is less than required
+const int32_t EXIT_INDEX_ALREADY_LOADED_ERROR =
+    -8001;  // index is loaded when create or load
+const int32_t EXIT_META_UNEXPECT_FOUND_ERROR =
+    -8002;  // meta found in index when insert
+const int32_t EXIT_INDEX_CORRUPT_ERROR = -8003;
+const int32_t EXIT_BLOCKID_CONFLICT_ERROR = -8004;
+const int32_t EXIT_BUCKET_CONFIGURE_ERROR = -8005;
+const int32_t EXIT_META_NOT_FOUND_ERROR = -8006;
+const int32_t EXIT_BLOCKID_ZERO_ERROR = -8007;
+
+// const 和 static const？
+
+static const std::string MAINBLOCK_DIR_PREFIX = "./mainblock/";
+static const std::string INDEX_DIR_PREFIX = "./index/";
+static const mode_t DIR_MODE = 0755;
+
+enum OperatorType { C_OPER_INSERT = 1, C_OPER_DELETE = 2 };
 
 struct MMapOption {
   int32_t max_mmap_size_;    // 最大映射空间尺寸，例：3M

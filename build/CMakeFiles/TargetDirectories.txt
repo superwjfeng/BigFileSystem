@@ -1,5 +1,10 @@
 /home/wjfeng/LargeFileSystem/build/CMakeFiles/edit_cache.dir
 /home/wjfeng/LargeFileSystem/build/CMakeFiles/rebuild_cache.dir
-/home/wjfeng/LargeFileSystem/build/bin/CMakeFiles/main.dir
-/home/wjfeng/LargeFileSystem/build/bin/CMakeFiles/edit_cache.dir
-/home/wjfeng/LargeFileSystem/build/bin/CMakeFiles/rebuild_cache.dir
+/home/wjfeng/LargeFileSystem/build/src/CMakeFiles/main.dir
+/home/wjfeng/LargeFileSystem/build/src/CMakeFiles/edit_cache.dir
+/home/wjfeng/LargeFileSystem/build/src/CMakeFiles/rebuild_cache.dir
+/home/wjfeng/LargeFileSystem/build/tests/CMakeFiles/mmap_file_test.dir
+/home/wjfeng/LargeFileSystem/build/tests/CMakeFiles/file_op_test.dir
+/home/wjfeng/LargeFileSystem/build/tests/CMakeFiles/mmap_file_op_test.dir
+/home/wjfeng/LargeFileSystem/build/tests/CMakeFiles/edit_cache.dir
+/home/wjfeng/LargeFileSystem/build/tests/CMakeFiles/rebuild_cache.dir

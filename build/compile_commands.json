@@ -1,22 +1,62 @@
 [
 {
-  "directory": "/home/wjfeng/LargeFileSystem/build/bin",
-  "command": "/usr/bin/g++  -I/home/wjfeng/LargeFileSystem/src/../include -g -o CMakeFiles/main.dir/main.cc.o -c /home/wjfeng/LargeFileSystem/src/main.cc",
+  "directory": "/home/wjfeng/LargeFileSystem/build/src",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/main.dir/main.cc.o -c /home/wjfeng/LargeFileSystem/src/main.cc",
   "file": "/home/wjfeng/LargeFileSystem/src/main.cc"
 },
 {
-  "directory": "/home/wjfeng/LargeFileSystem/build/bin",
-  "command": "/usr/bin/g++  -I/home/wjfeng/LargeFileSystem/src/../include -g -o CMakeFiles/main.dir/mmap_file.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file.cc",
+  "directory": "/home/wjfeng/LargeFileSystem/build/src",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/main.dir/mmap_file.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file.cc",
   "file": "/home/wjfeng/LargeFileSystem/src/mmap_file.cc"
 },
 {
-  "directory": "/home/wjfeng/LargeFileSystem/build/bin",
-  "command": "/usr/bin/g++  -I/home/wjfeng/LargeFileSystem/src/../include -g -o CMakeFiles/main.dir/file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/file_op.cc",
+  "directory": "/home/wjfeng/LargeFileSystem/build/src",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/main.dir/file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/file_op.cc",
   "file": "/home/wjfeng/LargeFileSystem/src/file_op.cc"
 },
 {
-  "directory": "/home/wjfeng/LargeFileSystem/build/bin",
-  "command": "/usr/bin/g++  -I/home/wjfeng/LargeFileSystem/src/../include -g -o CMakeFiles/main.dir/mmap_file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file_op.cc",
+  "directory": "/home/wjfeng/LargeFileSystem/build/src",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/main.dir/mmap_file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file_op.cc",
   "file": "/home/wjfeng/LargeFileSystem/src/mmap_file_op.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/mmap_file_test.dir/mmap_file_test.cc.o -c /home/wjfeng/LargeFileSystem/tests/mmap_file_test.cc",
+  "file": "/home/wjfeng/LargeFileSystem/tests/mmap_file_test.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/mmap_file_test.dir/__/src/mmap_file.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/mmap_file.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/file_op_test.dir/file_op_test.cc.o -c /home/wjfeng/LargeFileSystem/tests/file_op_test.cc",
+  "file": "/home/wjfeng/LargeFileSystem/tests/file_op_test.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/file_op_test.dir/__/src/file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/file_op.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/file_op.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/mmap_file_op_test.dir/mmap_file_op_test.cc.o -c /home/wjfeng/LargeFileSystem/tests/mmap_file_op_test.cc",
+  "file": "/home/wjfeng/LargeFileSystem/tests/mmap_file_op_test.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file_op.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/mmap_file_op.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/mmap_file_op_test.dir/__/src/file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/file_op.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/file_op.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/mmap_file.cc"
 }
 ]
