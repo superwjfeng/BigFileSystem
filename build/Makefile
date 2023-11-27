@@ -168,6 +168,32 @@ mmap_file_op_test/fast:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/build
 .PHONY : mmap_file_op_test/fast
 
+#=============================================================================
+# Target rules for targets named block_init_test
+
+# Build rule for target.
+block_init_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 block_init_test
+.PHONY : block_init_test
+
+# fast build rule for target.
+block_init_test/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/build
+.PHONY : block_init_test/fast
+
+#=============================================================================
+# Target rules for targets named block_write_test
+
+# Build rule for target.
+block_write_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 block_write_test
+.PHONY : block_write_test
+
+# fast build rule for target.
+block_write_test/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/build
+.PHONY : block_write_test/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -176,6 +202,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... block_init_test"
+	@echo "... block_write_test"
 	@echo "... file_op_test"
 	@echo "... main"
 	@echo "... mmap_file_op_test"

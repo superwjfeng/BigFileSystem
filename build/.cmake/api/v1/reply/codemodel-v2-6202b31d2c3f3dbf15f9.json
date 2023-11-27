@@ -31,7 +31,7 @@
 					"source" : "src",
 					"targetIndexes" : 
 					[
-						1
+						3
 					]
 				},
 				{
@@ -47,8 +47,10 @@
 					"targetIndexes" : 
 					[
 						0,
+						1,
 						2,
-						3
+						4,
+						5
 					]
 				}
 			],
@@ -68,12 +70,28 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4,
+						5
 					]
 				}
 			],
 			"targets" : 
 			[
+				{
+					"directoryIndex" : 2,
+					"id" : "block_init_test::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-block_init_test-Debug-f4025dc15c15b2317a8a.json",
+					"name" : "block_init_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "block_write_test::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-block_write_test-Debug-ccb765cf292c5df8e2da.json",
+					"name" : "block_write_test",
+					"projectIndex" : 0
+				},
 				{
 					"directoryIndex" : 2,
 					"id" : "file_op_test::@a44f0ac069e85531cdee",
@@ -84,7 +102,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "main::@145eef247bfb46b6828c",
-					"jsonFile" : "target-main-Debug-b1f733b9b5d0dc19c9b0.json",
+					"jsonFile" : "target-main-Debug-2b3bdbe53cbc2e2f665e.json",
 					"name" : "main",
 					"projectIndex" : 0
 				},

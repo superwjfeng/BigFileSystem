@@ -1,3 +1,5 @@
 add_executable(mmap_file_test mmap_file_test.cc ../src/mmap_file.cc)
 add_executable(file_op_test file_op_test.cc ../src/file_op.cc)
 add_executable(mmap_file_op_test mmap_file_op_test.cc ../src/mmap_file_op.cc ../src/file_op.cc ../src/mmap_file.cc)
+add_executable(block_init_test block_init_test.cc ../src/mmap_file.cc ../src/file_op.cc ../src/mmap_file_op.cc ../src/index_handle.cc)
+add_executable(block_write_test block_write_test.cc ../src/mmap_file.cc ../src/file_op.cc ../src/mmap_file_op.cc ../src/index_handle.cc)

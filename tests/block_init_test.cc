@@ -1,10 +1,10 @@
 #include "common.h"
 #include "index_handle.h"
 
-const static wjfeng::largefile::MMapOption mmap_option = {
-    1024000, 4096, 4096};  // parameter of mmap
-const static uint32_t main_blocksize = 1024 * 1024 * 64;
-const static uint32_t bucket_size = 1000;
+static const wjfeng::largefile::MMapOption mmap_option = {
+    10485760, 4096, 4096};                                 // 10MB, 4KB, 4KB
+const static uint32_t main_block_size = 1024 * 1024 * 64;  // 64MB
+const static uint32_t bucket_size = 1000;                  // 1000 个哈希桶
 static int32_t block_id = 1;
 static int debug = 1;
 
@@ -35,13 +35,13 @@ int main(int argc, char **argv) {
 
   // 2. 生成main block文件
   std::stringstream tmp_stream;
-  tmp_stream << "." << wjfeng::largefile::MAINBLOCK_DIR_PREFIX;
+  tmp_stream << "." << wjfeng::largefile::MAINBLOCK_DIR_PREFIX << block_id;
   tmp_stream >> mainblock_path;
 
   wjfeng::largefile::FileOperation *mainblock =
       new wjfeng::largefile::FileOperation(mainblock_path,
                                            O_RDWR | O_LARGEFILE | O_CREAT);
-  ret = mainblock->ftruncate_file(main_blocksize);
+  ret = mainblock->ftruncate_file(main_block_size);
 
   if (ret != 0) {
     fprintf(stderr, "create main block %s failed. reason: %s\n",

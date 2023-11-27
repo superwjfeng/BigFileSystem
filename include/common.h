@@ -23,16 +23,21 @@ const int32_t EXIT_INDEX_ALREADY_LOADED_ERROR =
     -8001;  // index is loaded when create or load
 const int32_t EXIT_META_UNEXPECT_FOUND_ERROR =
     -8002;  // meta found in index when insert
-const int32_t EXIT_INDEX_CORRUPT_ERROR = -8003;
-const int32_t EXIT_BLOCKID_CONFLICT_ERROR = -8004;
-const int32_t EXIT_BUCKET_CONFIGURE_ERROR = -8005;
-const int32_t EXIT_META_NOT_FOUND_ERROR = -8006;
-const int32_t EXIT_BLOCKID_ZERO_ERROR = -8007;
+const int32_t EXIT_INDEX_CORRUPT_ERROR =
+    -8003;  // index file is empty after mapping (maybe corrupted)
+const int32_t EXIT_BLOCKID_CONFLICT_ERROR =
+    -8004;  // input logic block id is not equal to actual block id
+const int32_t EXIT_BUCKET_CONFIGURE_ERROR =
+    -8005;  // error due to bucket size mismatch
+const int32_t EXIT_META_NOT_FOUND_ERROR =
+    -8006;  // MetaInfo did not found in hash slot
+const int32_t EXIT_BLOCKID_ZERO_ERROR =
+    -8007;  // block_id_ == 0 is not valid for updating block info
 
-// const 和 static const？
+// TODO: const 和 static const？
 
-static const std::string MAINBLOCK_DIR_PREFIX = "./mainblock/";
-static const std::string INDEX_DIR_PREFIX = "./index/";
+static const std::string MAINBLOCK_DIR_PREFIX = "/mainblock/";
+static const std::string INDEX_DIR_PREFIX = "/index/";
 static const mode_t DIR_MODE = 0755;
 
 enum OperatorType { C_OPER_INSERT = 1, C_OPER_DELETE = 2 };
@@ -52,9 +57,7 @@ struct BlockInfo {
   int32_t del_size_;
   uint32_t seq_no_;
 
-  BlockInfo() {  // struct 可以用初始化列表吗？
-    memset(this, 0, sizeof(BlockInfo));
-  }
+  BlockInfo() { memset(this, 0, sizeof(BlockInfo)); }
 
   inline bool operator==(const BlockInfo &rhs) const {
     return block_id_ == rhs.block_id_ && version_ == rhs.version_ &&
@@ -118,23 +121,24 @@ struct MetaInfo {
   }
 
  private:
-  uint64_t fileid_;
-
-  struct {
-    int32_t inner_offset_;
-    int32_t size_;
-  } location_;
-
-  int32_t next_meta_offset_;
-
- private:
   void init() {
     fileid_ = 0;
     location_.inner_offset_ = 0;
     location_.size_ = 0;
     next_meta_offset_ = 0;
   }
+
+ private:
+  uint64_t fileid_;
+
+  struct location_ {
+    int32_t inner_offset_;
+    int32_t size_;
+  } location_;
+
+  int32_t next_meta_offset_;
 };
+
 }  // namespace largefile
 }  // namespace wjfeng
 #endif  // _COMMON_H_INCLUDED_

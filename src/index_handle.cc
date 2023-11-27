@@ -8,6 +8,7 @@ IndexHandle::IndexHandle(const std::string &base_path,
                          const uint32_t main_block_id) {
   // create file_op_handle object
   std::stringstream tmp_stream;
+  // index_path: root/user/index/1
   tmp_stream << base_path << INDEX_DIR_PREFIX << main_block_id;
   std::string index_path;
   tmp_stream >> index_path;
@@ -39,7 +40,7 @@ int IndexHandle::create(const uint32_t logic_block_id,
   int64_t file_size = file_op_->get_file_size();
   if (file_size < 0)
     return LFS_ERROR;
-  else if (file_size == 0) {
+  else if (file_size == 0) {  // file is empty
     IndexHeader i_header;
     i_header.block_info_.block_id_ = logic_block_id;
     i_header.block_info_.seq_no_ = 1;
@@ -64,7 +65,7 @@ int IndexHandle::create(const uint32_t logic_block_id,
 
     ret = file_op_->flush_file();
     if (ret != LFS_SUCCESS) return ret;
-  } else {  // file size > 0, index already exist
+  } else {  // file size > 0, index already exists
     return EXIT_META_UNEXPECT_FOUND_ERROR;
   }
 
@@ -172,6 +173,8 @@ int IndexHandle::remove(const uint32_t logic_block_id) {
 
     ret = file_op_->unlink_file();
     return ret;
+  } else {
+    return EXIT_INDEX_CORRUPT_ERROR;
   }
 }
 
@@ -185,19 +188,20 @@ int IndexHandle::flush() {
 }
 
 int IndexHandle::write_segment_meta(const uint64_t key, MetaInfo &meta) {
-  int32_t current_offset = 0;
-  int32_t previous_offset = 0;
+  int32_t current_offset = 0;   // 当前MetaInfo的偏移
+  int32_t previous_offset = 0;  // 同一个slot中上一条MetaInfo的偏移
 
-  // 从文件哈希表中查找key是否存在
+  // 从文件哈希表中查找key是否已经存在，key对应的hash slot输出到previous_offset
   int ret = hash_find(key, current_offset, previous_offset);
-  if (LFS_SUCCESS == ret) {
+  if (ret == LFS_SUCCESS) {  // MetaInfo已经存在了
     return EXIT_META_UNEXPECT_FOUND_ERROR;
   } else if (ret != EXIT_META_NOT_FOUND_ERROR) {
     return ret;
+  } else {
+    // key不存在才写入meta到文件哈希表中，对应的hash_insert会处理MetaInfo插入IndexHandle
+    ret = hash_insert(key, previous_offset, meta);
+    return ret;
   }
-  // key 若不存在就写入meta到文件哈希表中
-  ret = hash_insert(key, previous_offset, meta);
-  return ret;
 }
 
 int IndexHandle::hash_find(const uint64_t key, int32_t &current_offset,
@@ -219,7 +223,7 @@ int IndexHandle::hash_find(const uint64_t key, int32_t &current_offset,
   */
   /*
     5. 从metainfo中取得下一个节点在文件中的偏移量，
-    若偏移量为0，直接返回EXIT_META_NOT_FOUND_ERROR
+    若偏移量为0，直接返回EXIT_META_NOT_FOUND_ERROR。否则跳转至第3步循环执行
   */
   int32_t pos = bucket_slot()[slot];
   for (; pos != 0;) {
@@ -242,11 +246,12 @@ int IndexHandle::hash_find(const uint64_t key, int32_t &current_offset,
 int32_t IndexHandle::hash_insert(const uint64_t key, int32_t previous_offset,
                                  MetaInfo &meta) {
   int ret = LFS_SUCCESS;
-  MetaInfo tmp_meta_info;
+  MetaInfo
+      tmp_meta_info;  // 用于插入MetaInfo时在哈希桶上找位置的时候保存临时MetaInfo
   // 1. 确定key存在的桶（slot）的位置
   int32_t slot = static_cast<int32_t>(key) % get_bucket_size();
 
-  // 2. 确定meta节点存储在文件中的偏移量
+  // 2. 确定MetaInfo在IndexHandel中的偏移量
   int32_t current_offset = get_index_header()->index_file_size_;
   get_index_header()->index_file_size_ += sizeof(MetaInfo);
 
@@ -255,13 +260,13 @@ int32_t IndexHandle::hash_insert(const uint64_t key, int32_t previous_offset,
   ret = file_op_->pwrite_file(reinterpret_cast<const char *>(&meta),
                               sizeof(MetaInfo), current_offset);
   if (ret != LFS_SUCCESS) {
-    get_index_header()->index_file_size_ = sizeof(MetaInfo);
+    get_index_header()->index_file_size_ -= sizeof(MetaInfo);
     return ret;
   }
 
   // 4. 将meta节点插入到哈希链表中
 
-  // 当前一个节点已经存在
+  // 哈希桶上已经有挂着MetaInfo节点了，此时要往哈希桶上的previous_offset后插
   if (previous_offset != 0) {
     ret = file_op_->pread_file(reinterpret_cast<char *>(&tmp_meta_info),
                                sizeof(MetaInfo), previous_offset);
@@ -277,14 +282,14 @@ int32_t IndexHandle::hash_insert(const uint64_t key, int32_t previous_offset,
       get_index_header()->index_file_size_ -= sizeof(MetaInfo);
       return ret;
     }
-  } else {  // 不存在前一个节点
+  } else {  // 不存在前一个节点，哈希桶的slot为空
     bucket_slot()[slot] = current_offset;
   }
 
   return LFS_SUCCESS;
 }
 
-int IndexHandle::update_block_info(const OperatorType oper_type,
+int IndexHandle::update_block_info(const OperatorType &oper_type,
                                    const uint32_t modify_size) {
   if (get_block_info()->block_id_ == 0) return EXIT_BLOCKID_ZERO_ERROR;
 
@@ -293,12 +298,17 @@ int IndexHandle::update_block_info(const OperatorType oper_type,
     get_block_info()->file_count_++;
     get_block_info()->seq_no_++;
     get_block_info()->size_ += modify_size;
+  } else {  // oper_type == C_OPER_DELETE
+    get_block_info()->version_--;
+    get_block_info()->file_count_--;
+    get_block_info()->seq_no_--;
+    get_block_info()->size_ -= modify_size;
   }
 
   if (debug) {
     printf(
         "load blockid %d index successful, data file size: %d, index file "
-        "size: %d, bucket_size: %d, free head offset: %d, seqno: %d, size:%d, "
+        "size: %d, bucket_size: %d, free head offset: %d, seqno: %d, size: %d, "
         "filecount: %d, del_size: %d, del_file_count:%d, version: %d\n",
         get_block_info()->block_id_, get_index_header()->data_file_offset_,
         get_index_header()->index_file_size_, get_index_header()->bucket_size_,

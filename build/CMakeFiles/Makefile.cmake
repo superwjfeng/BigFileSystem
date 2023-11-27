@@ -51,4 +51,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "tests/CMakeFiles/mmap_file_test.dir/DependInfo.cmake"
   "tests/CMakeFiles/file_op_test.dir/DependInfo.cmake"
   "tests/CMakeFiles/mmap_file_op_test.dir/DependInfo.cmake"
+  "tests/CMakeFiles/block_init_test.dir/DependInfo.cmake"
+  "tests/CMakeFiles/block_write_test.dir/DependInfo.cmake"
   )

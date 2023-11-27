@@ -1,10 +1,10 @@
 #include "common.h"
 #include "index_handle.h"
 
-const static wjfeng::largefile::MMapOption mmap_option = {
-    1024000, 4096, 4096};  // parameter of mmap
-const static uint32_t main_blocksize = 1024 * 1024 * 64;
-const static uint32_t bucket_size = 1000;
+static const wjfeng::largefile::MMapOption mmap_option = {
+    10485760, 4096, 4096};                                 // 10MB, 4KB, 4KB
+const static uint32_t main_block_size = 1024 * 1024 * 64;  // 64MB
+const static uint32_t bucket_size = 1000;                  // 1000 个哈希桶
 static int32_t block_id = 1;
 static int debug = 1;
 
@@ -33,9 +33,9 @@ int main(int argc, char **argv) {
     exit(-2);
   }
 
-  // 2. 写入文件到main block文件
+  // 2. 写入文件到main block
   std::stringstream tmp_stream;
-  tmp_stream << "." << wjfeng::largefile::MAINBLOCK_DIR_PREFIX;
+  tmp_stream << "." << wjfeng::largefile::MAINBLOCK_DIR_PREFIX << block_id;
   tmp_stream >> mainblock_path;
 
   wjfeng::largefile::FileOperation *mainblock =
@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
     exit(-3);
   }
 
-  // 3. 索引文件中写入Metainfo
+  // 3. 索引文件IndexHandle中写入新的Metainfo
   wjfeng::largefile::MetaInfo meta;
   meta.set_file_id(file_no);
   meta.set_offset(data_offset);
@@ -67,15 +67,14 @@ int main(int argc, char **argv) {
   if (ret == wjfeng::largefile::LFS_SUCCESS) {
     // 1. 更新索引信息
     index_handle->commit_block_data_offset(sizeof(buffer));
-    // 2. 更新块信息
+    // 2. 更新块信息，插入还是删除操作？
     index_handle->update_block_info(wjfeng::largefile::C_OPER_INSERT,
                                     sizeof(buffer));
     ret = index_handle->flush();
     if (ret != wjfeng::largefile::LFS_SUCCESS) {
-      fprintf(stderr, "flsh mainblock %d failed, file no: %u\n", block_id,
+      fprintf(stderr, "flush mainblock %d failed, file no: %u\n", block_id,
               file_no);
     }
-
   } else {
     fprintf(stderr, "write_segment_meta - mainblock %d failed, file no: %u\n",
             block_id, file_no);
