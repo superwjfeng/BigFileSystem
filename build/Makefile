@@ -194,6 +194,32 @@ block_write_test/fast:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/build
 .PHONY : block_write_test/fast
 
+#=============================================================================
+# Target rules for targets named block_read_test
+
+# Build rule for target.
+block_read_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 block_read_test
+.PHONY : block_read_test
+
+# fast build rule for target.
+block_read_test/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/build
+.PHONY : block_read_test/fast
+
+#=============================================================================
+# Target rules for targets named block_delete_test
+
+# Build rule for target.
+block_delete_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 block_delete_test
+.PHONY : block_delete_test
+
+# fast build rule for target.
+block_delete_test/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/build
+.PHONY : block_delete_test/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -202,7 +228,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... block_delete_test"
 	@echo "... block_init_test"
+	@echo "... block_read_test"
 	@echo "... block_write_test"
 	@echo "... file_op_test"
 	@echo "... main"

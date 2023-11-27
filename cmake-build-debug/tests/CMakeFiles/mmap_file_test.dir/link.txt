@@ -1,0 +1,1 @@
+g++ -g -rdynamic CMakeFiles/mmap_file_test.dir/mmap_file_test.cc.o CMakeFiles/mmap_file_test.dir/__/src/mmap_file.cc.o -o /home/wjfeng/LargeFileSystem/bin/mmap_file_test 

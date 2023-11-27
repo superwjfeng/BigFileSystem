@@ -1,0 +1,155 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "tests",
+					"jsonFile" : "directory-tests-Debug-b01f6abb0ab61427ef3b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tests",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "LargeFileSystem",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "block_delete_test::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-block_delete_test-Debug-e1f11b9c94a1782bdbca.json",
+					"name" : "block_delete_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "block_init_test::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-block_init_test-Debug-6e1f00005343d012ee78.json",
+					"name" : "block_init_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "block_read_test::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-block_read_test-Debug-437750c8ffdd426d14c4.json",
+					"name" : "block_read_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "block_write_test::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-block_write_test-Debug-75db34fdd3b1a4f45ce3.json",
+					"name" : "block_write_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "file_op_test::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-file_op_test-Debug-dda40a7965e1724a4b1a.json",
+					"name" : "file_op_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "main::@145eef247bfb46b6828c",
+					"jsonFile" : "target-main-Debug-b81b1666fd0addb25537.json",
+					"name" : "main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "mmap_file_op_test::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-mmap_file_op_test-Debug-5d2915bf1692d6e44fbe.json",
+					"name" : "mmap_file_op_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "mmap_file_test::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-mmap_file_test-Debug-8a198569be5787ea5bad.json",
+					"name" : "mmap_file_test",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/wjfeng/LargeFileSystem/cmake-build-debug",
+		"source" : "/home/wjfeng/LargeFileSystem"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}

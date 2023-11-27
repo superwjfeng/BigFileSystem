@@ -1,4 +1,3 @@
-#include "common.h"
 #include "index_handle.h"
 
 static const wjfeng::largefile::MMapOption mmap_option = {

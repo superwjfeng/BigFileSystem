@@ -204,6 +204,61 @@ int IndexHandle::write_segment_meta(const uint64_t key, MetaInfo &meta) {
   }
 }
 
+int32_t IndexHandle::read_segment_meta(const uint64_t key, MetaInfo &meta) {
+  int32_t current_offset = 0;
+  int32_t previous_offset = 0;
+
+  // int32_t slot = static_cast<int32_t>(key % get_bucket_size());
+  int ret = hash_find(key, current_offset, previous_offset);
+  if (ret == LFS_SUCCESS) {
+    ret = file_op_->pread_file(reinterpret_cast<char *>(&meta),
+                               sizeof(MetaInfo), current_offset);
+    return ret;
+  } else {
+    return ret;
+  }
+}
+
+int32_t IndexHandle::delete_segment_meta(const uint64_t key) {
+  int32_t current_offset = 0;
+  int32_t previous_offset = 0;
+
+  int ret = hash_find(key, current_offset, previous_offset);
+
+  if (ret != LFS_SUCCESS) return ret;
+
+  MetaInfo meta_info;
+  ret = file_op_->pread_file(reinterpret_cast<char *>(&meta_info),
+                             sizeof(MetaInfo), current_offset);
+  if (ret != LFS_SUCCESS) return ret;
+  int32_t next_pos = meta_info.get_next_meta_offset();
+
+  if (previous_offset == 0) {
+    int32_t slot = static_cast<uint32_t>(key) % get_bucket_size();
+    bucket_slot()[slot] = next_pos;
+  } else {
+    MetaInfo pre_meta_info;
+    ret = file_op_->pread_file(reinterpret_cast<char *>(&meta_info),
+                               sizeof(MetaInfo), previous_offset);
+    if (ret != LFS_SUCCESS) return ret;
+    pre_meta_info.set_next_meta_offset(next_pos);
+
+    ret = file_op_->pwrite_file(reinterpret_cast<char *>(&meta_info),
+                                sizeof(MetaInfo), previous_offset);
+    if (ret != LFS_SUCCESS) return ret;
+  }
+  // // 把删除节点加入可重用节点链表
+  // meta_info.set_next_meta_offset(get_free_head_offset());
+  // ret = file_op_->pwrite_file(reinterpret_cast<char *>(&meta_info),
+  //                             sizeof(MetaInfo), current_offset);
+  // if (ret != LFS_SUCCESS) return ret;
+  // get_index_header()->free_head_offset_ = current_offset;
+
+  update_block_info(C_OPER_DELETE, meta_info.get_size());
+
+  return LFS_SUCCESS;
+}
+
 int IndexHandle::hash_find(const uint64_t key, int32_t &current_offset,
                            int32_t &previous_offset) {
   int ret = LFS_SUCCESS;
@@ -299,10 +354,11 @@ int IndexHandle::update_block_info(const OperatorType &oper_type,
     get_block_info()->seq_no_++;
     get_block_info()->size_ += modify_size;
   } else {  // oper_type == C_OPER_DELETE
-    get_block_info()->version_--;
+    get_block_info()->version_++;
     get_block_info()->file_count_--;
-    get_block_info()->seq_no_--;
     get_block_info()->size_ -= modify_size;
+    get_block_info()->del_file_count_;
+    get_block_info()->del_size_ += modify_size;
   }
 
   if (debug) {

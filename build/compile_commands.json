@@ -108,5 +108,55 @@
   "directory": "/home/wjfeng/LargeFileSystem/build/tests",
   "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_write_test.dir/__/src/index_handle.cc.o -c /home/wjfeng/LargeFileSystem/src/index_handle.cc",
   "file": "/home/wjfeng/LargeFileSystem/src/index_handle.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_read_test.dir/block_read_test.cc.o -c /home/wjfeng/LargeFileSystem/tests/block_read_test.cc",
+  "file": "/home/wjfeng/LargeFileSystem/tests/block_read_test.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_read_test.dir/__/src/mmap_file.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/mmap_file.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_read_test.dir/__/src/file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/file_op.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/file_op.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_read_test.dir/__/src/mmap_file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file_op.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/mmap_file_op.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_read_test.dir/__/src/index_handle.cc.o -c /home/wjfeng/LargeFileSystem/src/index_handle.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/index_handle.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_delete_test.dir/block_delete_test.cc.o -c /home/wjfeng/LargeFileSystem/tests/block_delete_test.cc",
+  "file": "/home/wjfeng/LargeFileSystem/tests/block_delete_test.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_delete_test.dir/__/src/mmap_file.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/mmap_file.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_delete_test.dir/__/src/file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/file_op.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/file_op.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_delete_test.dir/__/src/mmap_file_op.cc.o -c /home/wjfeng/LargeFileSystem/src/mmap_file_op.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/mmap_file_op.cc"
+},
+{
+  "directory": "/home/wjfeng/LargeFileSystem/build/tests",
+  "command": "g++  -I/home/wjfeng/LargeFileSystem/include -g -o CMakeFiles/block_delete_test.dir/__/src/index_handle.cc.o -c /home/wjfeng/LargeFileSystem/src/index_handle.cc",
+  "file": "/home/wjfeng/LargeFileSystem/src/index_handle.cc"
 }
 ]

@@ -54,6 +54,13 @@ class IndexHandle {
         ->data_file_offset_;
   }
 
+  int32_t get_free_head_offset() const {
+       return static_cast<IndexHeader *>(file_op_->get_map_data())
+        ->free_head_offset_;
+  }
+
+
+  // TODO: rename to get_bucket_slot
   // return an array
   int32_t *bucket_slot() {
     return reinterpret_cast<int32_t *>(
@@ -62,6 +69,11 @@ class IndexHandle {
 
   // write MetaInfo into IndexHandle
   int32_t write_segment_meta(const uint64_t key, MetaInfo &meta);
+
+  // 如果存在，就把信息读到meta这个输出型参数中
+  int32_t read_segment_meta(const uint64_t key, MetaInfo &meta);
+
+  int32_t delete_segment_meta(const uint64_t key);
 
   int32_t hash_find(const uint64_t key, int32_t &current_offset,
                     int32_t &previous_offset);

@@ -1,0 +1,14 @@
+/home/wjfeng/LargeFileSystem/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/src/CMakeFiles/main.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/src/CMakeFiles/edit_cache.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/src/CMakeFiles/rebuild_cache.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/tests/CMakeFiles/mmap_file_test.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/tests/CMakeFiles/file_op_test.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/tests/CMakeFiles/mmap_file_op_test.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/tests/CMakeFiles/block_init_test.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/tests/CMakeFiles/block_write_test.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/tests/CMakeFiles/block_read_test.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/tests/CMakeFiles/block_delete_test.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/tests/CMakeFiles/edit_cache.dir
+/home/wjfeng/LargeFileSystem/cmake-build-debug/tests/CMakeFiles/rebuild_cache.dir

@@ -186,6 +186,34 @@ block_write_test/fast:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/build
 .PHONY : block_write_test/fast
 
+# Convenience name for target.
+tests/CMakeFiles/block_read_test.dir/rule:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/block_read_test.dir/rule
+.PHONY : tests/CMakeFiles/block_read_test.dir/rule
+
+# Convenience name for target.
+block_read_test: tests/CMakeFiles/block_read_test.dir/rule
+.PHONY : block_read_test
+
+# fast build rule for target.
+block_read_test/fast:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/build
+.PHONY : block_read_test/fast
+
+# Convenience name for target.
+tests/CMakeFiles/block_delete_test.dir/rule:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/block_delete_test.dir/rule
+.PHONY : tests/CMakeFiles/block_delete_test.dir/rule
+
+# Convenience name for target.
+block_delete_test: tests/CMakeFiles/block_delete_test.dir/rule
+.PHONY : block_delete_test
+
+# fast build rule for target.
+block_delete_test/fast:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/build
+.PHONY : block_delete_test/fast
+
 __/src/file_op.o: __/src/file_op.cc.o
 .PHONY : __/src/file_op.o
 
@@ -195,6 +223,8 @@ __/src/file_op.cc.o:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/__/src/file_op.cc.o
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/file_op.cc.o
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/file_op.cc.o
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/file_op.cc.o
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/file_op.cc.o
 .PHONY : __/src/file_op.cc.o
 
 __/src/file_op.i: __/src/file_op.cc.i
@@ -206,6 +236,8 @@ __/src/file_op.cc.i:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/__/src/file_op.cc.i
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/file_op.cc.i
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/file_op.cc.i
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/file_op.cc.i
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/file_op.cc.i
 .PHONY : __/src/file_op.cc.i
 
 __/src/file_op.s: __/src/file_op.cc.s
@@ -217,6 +249,8 @@ __/src/file_op.cc.s:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/__/src/file_op.cc.s
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/file_op.cc.s
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/file_op.cc.s
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/file_op.cc.s
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/file_op.cc.s
 .PHONY : __/src/file_op.cc.s
 
 __/src/index_handle.o: __/src/index_handle.cc.o
@@ -226,6 +260,8 @@ __/src/index_handle.o: __/src/index_handle.cc.o
 __/src/index_handle.cc.o:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/index_handle.cc.o
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/index_handle.cc.o
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/index_handle.cc.o
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/index_handle.cc.o
 .PHONY : __/src/index_handle.cc.o
 
 __/src/index_handle.i: __/src/index_handle.cc.i
@@ -235,6 +271,8 @@ __/src/index_handle.i: __/src/index_handle.cc.i
 __/src/index_handle.cc.i:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/index_handle.cc.i
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/index_handle.cc.i
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/index_handle.cc.i
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/index_handle.cc.i
 .PHONY : __/src/index_handle.cc.i
 
 __/src/index_handle.s: __/src/index_handle.cc.s
@@ -244,6 +282,8 @@ __/src/index_handle.s: __/src/index_handle.cc.s
 __/src/index_handle.cc.s:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/index_handle.cc.s
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/index_handle.cc.s
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/index_handle.cc.s
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/index_handle.cc.s
 .PHONY : __/src/index_handle.cc.s
 
 __/src/mmap_file.o: __/src/mmap_file.cc.o
@@ -255,6 +295,8 @@ __/src/mmap_file.cc.o:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file.cc.o
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/mmap_file.cc.o
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/mmap_file.cc.o
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/mmap_file.cc.o
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/mmap_file.cc.o
 .PHONY : __/src/mmap_file.cc.o
 
 __/src/mmap_file.i: __/src/mmap_file.cc.i
@@ -266,6 +308,8 @@ __/src/mmap_file.cc.i:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file.cc.i
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/mmap_file.cc.i
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/mmap_file.cc.i
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/mmap_file.cc.i
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/mmap_file.cc.i
 .PHONY : __/src/mmap_file.cc.i
 
 __/src/mmap_file.s: __/src/mmap_file.cc.s
@@ -277,6 +321,8 @@ __/src/mmap_file.cc.s:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file.cc.s
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/mmap_file.cc.s
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/mmap_file.cc.s
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/mmap_file.cc.s
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/mmap_file.cc.s
 .PHONY : __/src/mmap_file.cc.s
 
 __/src/mmap_file_op.o: __/src/mmap_file_op.cc.o
@@ -287,6 +333,8 @@ __/src/mmap_file_op.cc.o:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file_op.cc.o
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/mmap_file_op.cc.o
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/mmap_file_op.cc.o
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/mmap_file_op.cc.o
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/mmap_file_op.cc.o
 .PHONY : __/src/mmap_file_op.cc.o
 
 __/src/mmap_file_op.i: __/src/mmap_file_op.cc.i
@@ -297,6 +345,8 @@ __/src/mmap_file_op.cc.i:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file_op.cc.i
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/mmap_file_op.cc.i
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/mmap_file_op.cc.i
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/mmap_file_op.cc.i
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/mmap_file_op.cc.i
 .PHONY : __/src/mmap_file_op.cc.i
 
 __/src/mmap_file_op.s: __/src/mmap_file_op.cc.s
@@ -307,7 +357,33 @@ __/src/mmap_file_op.cc.s:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mmap_file_op_test.dir/build.make tests/CMakeFiles/mmap_file_op_test.dir/__/src/mmap_file_op.cc.s
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/__/src/mmap_file_op.cc.s
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_write_test.dir/build.make tests/CMakeFiles/block_write_test.dir/__/src/mmap_file_op.cc.s
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/__/src/mmap_file_op.cc.s
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/__/src/mmap_file_op.cc.s
 .PHONY : __/src/mmap_file_op.cc.s
+
+block_delete_test.o: block_delete_test.cc.o
+.PHONY : block_delete_test.o
+
+# target to build an object file
+block_delete_test.cc.o:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/block_delete_test.cc.o
+.PHONY : block_delete_test.cc.o
+
+block_delete_test.i: block_delete_test.cc.i
+.PHONY : block_delete_test.i
+
+# target to preprocess a source file
+block_delete_test.cc.i:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/block_delete_test.cc.i
+.PHONY : block_delete_test.cc.i
+
+block_delete_test.s: block_delete_test.cc.s
+.PHONY : block_delete_test.s
+
+# target to generate assembly for a file
+block_delete_test.cc.s:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_delete_test.dir/build.make tests/CMakeFiles/block_delete_test.dir/block_delete_test.cc.s
+.PHONY : block_delete_test.cc.s
 
 block_init_test.o: block_init_test.cc.o
 .PHONY : block_init_test.o
@@ -332,6 +408,30 @@ block_init_test.s: block_init_test.cc.s
 block_init_test.cc.s:
 	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_init_test.dir/build.make tests/CMakeFiles/block_init_test.dir/block_init_test.cc.s
 .PHONY : block_init_test.cc.s
+
+block_read_test.o: block_read_test.cc.o
+.PHONY : block_read_test.o
+
+# target to build an object file
+block_read_test.cc.o:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/block_read_test.cc.o
+.PHONY : block_read_test.cc.o
+
+block_read_test.i: block_read_test.cc.i
+.PHONY : block_read_test.i
+
+# target to preprocess a source file
+block_read_test.cc.i:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/block_read_test.cc.i
+.PHONY : block_read_test.cc.i
+
+block_read_test.s: block_read_test.cc.s
+.PHONY : block_read_test.s
+
+# target to generate assembly for a file
+block_read_test.cc.s:
+	cd /home/wjfeng/LargeFileSystem/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/block_read_test.dir/build.make tests/CMakeFiles/block_read_test.dir/block_read_test.cc.s
+.PHONY : block_read_test.cc.s
 
 block_write_test.o: block_write_test.cc.o
 .PHONY : block_write_test.o
@@ -437,7 +537,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... block_delete_test"
 	@echo "... block_init_test"
+	@echo "... block_read_test"
 	@echo "... block_write_test"
 	@echo "... file_op_test"
 	@echo "... mmap_file_op_test"
@@ -454,9 +556,15 @@ help:
 	@echo "... __/src/mmap_file_op.o"
 	@echo "... __/src/mmap_file_op.i"
 	@echo "... __/src/mmap_file_op.s"
+	@echo "... block_delete_test.o"
+	@echo "... block_delete_test.i"
+	@echo "... block_delete_test.s"
 	@echo "... block_init_test.o"
 	@echo "... block_init_test.i"
 	@echo "... block_init_test.s"
+	@echo "... block_read_test.o"
+	@echo "... block_read_test.i"
+	@echo "... block_read_test.s"
 	@echo "... block_write_test.o"
 	@echo "... block_write_test.i"
 	@echo "... block_write_test.s"
