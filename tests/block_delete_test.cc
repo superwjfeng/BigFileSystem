@@ -1,12 +1,3 @@
-/*
- * @Author: wjfeng wj.feng@tum.de
- * @Date: 2023-11-28 01:39:02
- * @LastEditors: wjfeng wj.feng@tum.de
- * @LastEditTime: 2023-11-28 02:47:40
- * @FilePath: /LargeFileSystem/tests/block_delete_test.cc
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
- * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 #include "index_handle.h"
 
 static const wjfeng::largefile::MMapOption mmap_option = {
